@@ -1,6 +1,6 @@
 # This workflow will build and test the project on every push to the main branch
 
-name: petclinic-ci
+name: Petclinic-Ci
 
 on:
     push:
@@ -10,6 +10,9 @@ on:
 jobs:
     build:
         runs-on: ubutu-latest
+        defaults:
+            run:
+              working-directory: ./spring-petclinic
         strategy:
             matrix:
                 jave-version: [ '17']
@@ -18,7 +21,7 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v4
             
-            - name: Set up JDK ${{ matrix.jave}}
+            - name: Set up JDK ${{matrix.java}}
               uses: actions/setup-java@v4
               with:
                     java-version: ${{matrix.java}}
@@ -27,12 +30,12 @@ jobs:
             
             - name: Build with Maven Wrapper
               run: ./mvnw -B verify
-            
-            - name: Unit Tests
-              run: ./mvnw -B test
 
     code-quality:
          runs-on: ubuntu-latest
+         defaults:
+            run:
+              working-directory: ./spring-petclinic
 
          
          steps:
@@ -42,8 +45,8 @@ jobs:
             - name: Setup SonarCloud
               uses: SonarSource/sonarcloud-github-action@master
               env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                SONAR_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+                GITHUB_TOKEN: ${{ secrets._GITHUB_TOKEN }}
+                SONAR_TOKEN: ${{ secrets.SONAR_TOKEN}}
               with:
                 projectBaseDir: quiz-app
                 args: >
@@ -56,6 +59,9 @@ jobs:
 
     docker:
         runs-on: ubuntu-latest
+        defaults:
+            run:
+              working-directory: ./spring-petclinic
         
         needs: build
 
@@ -91,24 +97,28 @@ jobs:
 
     Update-K8s:
         runs-on: ubuntu-latest
+        defaults:
+            run:
+              working-directory: ./spring-petclinic
+              
         needs: docker
 
         steps:
             - name: checkout code
               uses: actions/checkout@v4
               with:
-                token: ${{ secrets.GITHUB_TOKEN}}
+                token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Update tags in K8s deployment manifest
               run: |
-               sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/petclinic:${{github.run_id}}|" kubernetes/deployment.yaml
+               sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/petclinic:${{github.run_id}}|" deployment.yaml
                 
             - name: commit and push changes
               run: |
-                git config --global user.email "abhishek@gmail.com"
-                git config --global user.name "Abhishek Veeramalla"
-                git add kubernetes/productcatalog/deploy.yaml
-                git commit -m "[CI]: Update product catalog image tag"
+                git config --global user.email "sheytanyadomini@gmail.com"
+                git config --global user.name "tanya-domi"
+                git add deployment.yaml
+                git commit -m "[CI]: Update deployment image tag"
                 git push origin HEAD:main -f
 
     Slack-notification:
@@ -117,7 +127,11 @@ jobs:
         needs: [build, docker, Update-K8s]
         continue-on-error: true
         runs-on: ubuntu-latest
+        
         steps:
+        - uses: actions/checkout@v4
+        - run: cat deployment.yaml
+         
         - uses: actions/checkout@v4
         - name: Slack Notification
           uses: rtCamp/action-slack-notify@v2
