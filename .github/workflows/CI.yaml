@@ -42,7 +42,7 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v4
 
-            - name: Setup SonarCloud
+            - name: sonarqube-scan-action 
               uses: SonarSource/sonarcloud-github-action@master
               env:
                 GITHUB_TOKEN: ${{ secrets._GITHUB_TOKEN }}
