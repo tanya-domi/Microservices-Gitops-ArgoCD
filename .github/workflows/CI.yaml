@@ -10,9 +10,7 @@ on:
 jobs:
     build:
         runs-on: ubutu-latest
-        defaults:
-            run:
-              working-directory: ./spring-petclinic
+       
         strategy:
             matrix:
                 jave-version: [ '17']
@@ -33,9 +31,6 @@ jobs:
 
     code-quality:
          runs-on: ubuntu-latest
-         defaults:
-            run:
-              working-directory: ./spring-petclinic
 
          
          steps:
@@ -59,9 +54,6 @@ jobs:
 
     docker:
         runs-on: ubuntu-latest
-        defaults:
-            run:
-              working-directory: ./spring-petclinic
         
         needs: build
 
@@ -97,9 +89,6 @@ jobs:
 
     Update-K8s:
         runs-on: ubuntu-latest
-        defaults:
-            run:
-              working-directory: ./spring-petclinic
               
         needs: docker
 
@@ -124,7 +113,9 @@ jobs:
     Slack-notification:
         if: always()
         name: Slack Notification
+        
         needs: [build, docker, Update-K8s]
+        
         continue-on-error: true
         runs-on: ubuntu-latest
         
