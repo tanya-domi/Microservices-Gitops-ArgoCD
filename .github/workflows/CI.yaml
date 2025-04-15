@@ -10,6 +10,9 @@ on:
 jobs:
     build:
         runs-on: ubutu-latest
+        defaults:
+            run:
+              working-directory: spring-petclinic
        
         strategy:
             matrix:
@@ -31,6 +34,9 @@ jobs:
 
     code-quality:
          runs-on: ubuntu-latest
+         defaults:
+            run:
+              working-directory: spring-petclinic
 
          
          steps:
@@ -54,6 +60,9 @@ jobs:
 
     docker:
         runs-on: ubuntu-latest
+        defaults:
+            run:
+              working-directory: spring-petclinic
         
         needs: build
 
