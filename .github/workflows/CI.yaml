@@ -9,7 +9,7 @@ on:
         branches: [main]
 jobs:
     build:
-        runs-on: ubutu-latest
+        runs-on: ubuntu-latest
         strategy:
             matrix:
                 jave-version: [ '17']
