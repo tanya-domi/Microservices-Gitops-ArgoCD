@@ -13,7 +13,7 @@ ARG PROFILE=dev
 ARG APP_VERSION=3.4.0
 
 WORKDIR /home/petclinic/
-COPY --from=builder /home/petclinic/target/*.jar ./
+COPY --from=builder /home/petclinic/target/*.jar /home/petclinic/.jar
 
 EXPOSE 8080
 
