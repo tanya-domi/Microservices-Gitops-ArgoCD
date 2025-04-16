@@ -54,12 +54,13 @@ jobs:
                 git config --global --add url."https://${{ secrets.GITHUB_SECRET }}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
 
             - name: Sonar Maven Scan
-              run: |
-                 mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+                  mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
              
               env:
                 GITHUB_TOKEN: ${{ secrets._GITHUB_TOKEN }}
                 SONAR_TOKEN: ${{ secrets.SONAR_TOKEN}}
+              with:
+                projectBaseDir: spring-petclinic
                 
                 args: >
                   -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
