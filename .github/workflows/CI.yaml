@@ -46,7 +46,6 @@ jobs:
               with:
                  submodules: true
                  token: ${{ secrets.CI_TOKEN }}
-                 projectBaseDir: spring-petclinic
     
 
             - name: Fix up git URLs
@@ -55,7 +54,8 @@ jobs:
                 git config --global --add url."https://${{ secrets.GITHUB_SECRET }}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
 
             - name: Sonar Maven Scan
-              run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+              run: |
+                 mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
              
               env:
                 GITHUB_TOKEN: ${{ secrets._GITHUB_TOKEN }}
