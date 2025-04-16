@@ -53,11 +53,13 @@ jobs:
                 git config --global --add url."https://${{ secrets.GITHUB_SECRET }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
                 git config --global --add url."https://${{ secrets.GITHUB_SECRET }}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
 
-            - name: sonarqube-scan-action 
-              uses: SonarSource/sonarqube-scan-action@v5.0.0
+            - name: Analyze with SonarCloud
+              uses: sonarsource/sonarcloud-github-action@master
+              
               env:
                 GITHUB_TOKEN: ${{ secrets._GITHUB_TOKEN }}
                 SONAR_TOKEN: ${{ secrets.SONAR_TOKEN}}
+                
               with:
                 projectBaseDir: spring-petclinic
                 args: >
