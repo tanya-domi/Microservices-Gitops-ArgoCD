@@ -12,7 +12,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                jave-version: [ '17']
+                jave-version: ['17']
 
         steps:
             - name: checkout code
