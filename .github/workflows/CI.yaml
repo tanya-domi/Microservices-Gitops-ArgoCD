@@ -104,7 +104,7 @@ jobs:
                 context: src/main/docker
                 file: Dockerfile
                 push: true
-                tags: ${{ secrets.DOCKER_USERNAME }}/petclinic-springboot${{ github}}
+                tags: ${{ secrets.DOCKER_USERNAME }}/petclinic-springboot:${{github.run_id}}
             
             - name: Run Trivy vulnerability scanner
               uses: aquasecurity/trivy-action@master
