@@ -54,7 +54,7 @@ jobs:
                 git config --global --add url."https://${{ secrets.GITHUB_SECRET }}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
 
             - name: Analyze with SonarCloud
-              uses: sonarsource/sonarcloud-github-action@master
+              uses: SonarSource/sonarqube-scan-action@v5.0.0
               
               env:
                 GITHUB_TOKEN: ${{ secrets._GITHUB_TOKEN }}
