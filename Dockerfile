@@ -2,13 +2,13 @@ FROM eclipse-temurin:21-jdk AS builder
 
 WORKDIR /app
 
-COPY spring-petclinic/.mvn/ .mvn
+COPY .mvn/ .mvn/
 
-COPY spring-petclinic/mvnw spring-petclinic/pom.xml ./
+COPY ./mvnw spring-petclinic/pom.xml ./
 
-RUN ./mvnw dependency:resolve
+RUN ./mvnw dependency:go-offline
 
-COPY spring-petclinic/src ./src
+COPY ./src ./src
 
 #Build Application
 RUN ./mvnw package -DskipTests
