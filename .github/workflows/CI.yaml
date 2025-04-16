@@ -58,6 +58,8 @@ jobs:
               env:
                 GITHUB_TOKEN: ${{ secrets._GITHUB_TOKEN }}
                 SONAR_TOKEN: ${{ secrets.SONAR_TOKEN}}
+              with:
+                projectBaseDir: spring-petclinic
                 args: >
                   -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
                   -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
