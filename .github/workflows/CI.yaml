@@ -37,11 +37,9 @@ jobs:
          steps:
             - name: checkout code
               uses: actions/checkout@v4
-              
-            - name: Fix up git URLs
-              run: |
-                git config --global --add url."https://${{ secrets.GITHUB_SECRET }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
-                git config --global --add url."https://${{ secrets.GITHUB_SECRET }}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
+              with:
+                submodules: true
+                token: ${{ secrets.CI_TOKEN }}
 
             - name: sonarqube-scan-action 
               uses: SonarSource/sonarqube-scan-action@v5.0.0
@@ -64,11 +62,9 @@ jobs:
         steps:
             - name: checkout code
               uses: actions/checkout@v4
-              
-            - name: Fix up git URLs
-              run: |
-                git config --global --add url."https://${{ secrets.GITHUB_SECRET }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
-                git config --global --add url."https://${{ secrets.GITHUB_SECRET }}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
+              with:
+                submodules: true
+                token: ${{ secrets.CI_TOKEN }}
 
             - name: Install Docker
               uses: docker/setup-buildx-action@v1
