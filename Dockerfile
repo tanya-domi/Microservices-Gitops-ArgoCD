@@ -4,13 +4,13 @@ WORKDIR /app
 
 COPY --chmod=0755 mvnw mvnw
 
-COPY .mvn/ .mvn/
+COPY spring-petclinic/.mvn/ .mvn
 
-COPY ./mvnw spring-petclinic/pom.xml ./
+COPY spring-petclinic/mvnw spring-petclinic/pom.xml ./
 
-RUN ./mvnw dependency:go-offline
+RUN ./mvnw dependency:resolve
 
-COPY ./src ./src
+COPY spring-petclinic/src ./src
 
 #Build Application
 RUN ./mvnw package -DskipTests
