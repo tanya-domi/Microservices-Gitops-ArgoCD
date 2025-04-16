@@ -16,11 +16,11 @@ spec:
     spec:
       initContainers:
         - name: init-db
-          image: busybox:1.31
+          image: dts81/petclinic:14504407372
           command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z mysql 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL DB Server has started";']      
       containers:
         - name: petclinic-app
-          image: dts81/petclinic-springboot:1.0.0  
+          image: dts81/petclinic:14504407372
           ports: 
             - containerPort: 8080        
           env:
