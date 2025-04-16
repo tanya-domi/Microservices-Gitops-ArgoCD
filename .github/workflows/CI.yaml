@@ -53,9 +53,6 @@ jobs:
                 git config --global --add url."https://${{ secrets.GITHUB_SECRET }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
                 git config --global --add url."https://${{ secrets.GITHUB_SECRET }}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
 
-            - name: Sonar Maven Scan
-              run:  mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
-
             - name: Analyze with SonarCloud
               uses: SonarSource/sonarqube-scan-action@v5.0.0
               
