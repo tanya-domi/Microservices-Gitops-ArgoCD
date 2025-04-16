@@ -111,13 +111,6 @@ jobs:
                 push: true
                 tags: ${{ secrets.DOCKER_USERNAME }}/petclinic-springboot:${{github.run_id}}
             
-            - name: Run Trivy vulnerability scanner
-              uses: aquasecurity/trivy-action@master
-              with:
-                image-ref: 'docker.io/${{ secrets.DOCKER_USERNAME }}/spring-petclinic'
-                format: 'sarif'
-                output: 'trivy-results.sarif'
-                severity: 'CRITICAL,HIGH' 
 
     Update-K8s:
         runs-on: ubuntu-latest
