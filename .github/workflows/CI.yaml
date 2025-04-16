@@ -46,6 +46,7 @@ jobs:
               with:
                  submodules: true
                  token: ${{ secrets.CI_TOKEN }}
+                 projectBaseDir: spring-petclinic
     
 
             - name: Fix up git URLs
