@@ -2,6 +2,8 @@ FROM eclipse-temurin:21-jdk AS builder
 
 WORKDIR /app
 
+COPY --chmod=0755 mvnw mvnw
+
 COPY .mvn/ .mvn/
 
 COPY ./mvnw spring-petclinic/pom.xml ./
