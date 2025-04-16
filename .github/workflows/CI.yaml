@@ -101,7 +101,6 @@ jobs:
             - name: Build Docker and Push
               uses: docker/build-push-action@v6
               with:
-                context: src/main/docker
                 file: Dockerfile
                 push: true
                 tags: ${{ secrets.DOCKER_USERNAME }}/petclinic-springboot:${{github.run_id}}
