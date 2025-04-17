@@ -164,7 +164,7 @@ jobs:
            SLACK_TITLE: GitOps-ArgoCD Deployment
          
            
-        - name: Build status
+        - name: check status
         - uses: act10ns/slack@v2
           with:
             channel: 'github-actions-chennels'
