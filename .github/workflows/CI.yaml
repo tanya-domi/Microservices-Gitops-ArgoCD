@@ -162,15 +162,9 @@ jobs:
            SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
            SLACK_MESSAGE: ':hammer_and_wrench: Triggered by ${{github.actor}}'
            SLACK_TITLE: GitOps-ArgoCD Deployment
+           STATUS: ${{ job.status }}
+           STEPS: ${{ toJson(steps) }}
          
-           
-        - name: check status
-        - uses: act10ns/slack@v2
-          with:
-            channel: 'github-actions-chennels'
-            status: ${{ job.status }}
-            steps: ${{ toJson(steps) }}
-          if: always()
-
+          
 
 
