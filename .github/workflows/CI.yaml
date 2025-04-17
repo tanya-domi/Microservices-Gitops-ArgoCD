@@ -21,9 +21,9 @@ jobs:
                  submodules: true
                  token: ${{ secrets.CI_TOKEN }}
                  
-            - name: Commit something
-              run: |
-                 git commit -m "Update report [skip ci]"
+            #- name: Commit something
+             # run: |
+                 #git commit -m "Update report [skip ci]"
               
             - name: Fix up git URLs
               run: |
@@ -158,10 +158,20 @@ jobs:
           uses: rtCamp/action-slack-notify@v2
           env:
            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-           SLACK_CHANNEL: github-actions-chennels
+           SLACK_CHANNEL: 'github-actions-chennels'
            SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
            SLACK_MESSAGE: ':hammer_and_wrench: Triggered by ${{github.actor}}'
            SLACK_TITLE: GitOps-ArgoCD Deployment
+         
+        - name: Build status
+          uses: act10ns/slack@v2
+          with:
+            channel: 'github-actions-chennels'
+            status: ${{ job.status }}
+            steps: ${{ toJson(steps) }}
+          if: always()
+
+
         
           
 
