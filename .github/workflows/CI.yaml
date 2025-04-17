@@ -65,7 +65,7 @@ jobs:
                 
                 args: >
             - name: Build and analyze with Maven
-              run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+              run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar 
                   -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
                   -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
                   -Dsonar.host.url=${{ secrets.SONAR_URL }}
