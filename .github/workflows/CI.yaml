@@ -109,7 +109,7 @@ jobs:
                 projectBaseDir: spring-petclinic
                 file: Dockerfile
                 push: true
-                tags: ${{ secrets.DOCKER_USERNAME }}/petclinic-springboot:${{github.run_id}}
+                tags: ${{ secrets.DOCKER_USERNAME }}/petclinic-spring:${{github.run_id}}
             
 
     Update-K8s:
@@ -126,13 +126,13 @@ jobs:
             - name: Update tags in K8s deployment manifest
               working-directory: kubernetes-manifest/deployment.yaml
               run: |
-               sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/springboot-petclinic:${{github.run_id}}|" kubernetes-manifest/deployment.yaml
+               sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/petclinic-spring:${{github.run_id}}|" kubernetes-manifest/deployment.yaml
                 
             - name: commit and push changes
               run: |
                 git config --global user.email "sheytanyadominic@gmail.com"
                 git config --global user.name "Dominic-tanya"
-                git add kubernetes-manifes/deployment.yaml
+                git add deployment.yaml
                 git commit -m "[CI]: Update deployment image tag"
                 git push origin HEAD:main -f
 
