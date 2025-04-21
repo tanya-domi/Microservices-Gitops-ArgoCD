@@ -124,9 +124,9 @@ jobs:
                 token: ${{ secrets._GITHUB_TOKEN }}
 
             - name: Update tags in K8s deployment manifest
-              working-directory: kubernetes-manifest/deployment.yaml
+              working-directory: kubernetes-manifest/
               run: |
-               sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/petclinic-spring:${{github.run_id}}|" kubernetes-manifest/deployment.yaml
+               sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/petclinic-spring:${{github.run_id}}|" kubernetes-manifest/
                 
             - name: commit and push changes
               run: |
