@@ -131,7 +131,6 @@ jobs:
                 git config --global --add url."https://${{ secrets.GITHUB_SECRET }}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
 
             - name: Update tags in K8s deployment manifest
-              working-directory: kubernetes-manifest/deployment.yaml
               run: |
                sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/petclinic-spring:${{github.run_id}}|" kubernetes-manifest/deployment.yaml
                 
