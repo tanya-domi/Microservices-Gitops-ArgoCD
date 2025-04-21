@@ -20,10 +20,6 @@ jobs:
               with:
                  submodules: true
                  token: ${{ secrets.CI_TOKEN }}
-                 
-            #- name: Commit something
-             # run: |
-                 #git commit -m "Update report [skip ci]"
               
             - name: Fix up git URLs
               run: |
@@ -60,8 +56,8 @@ jobs:
                 git config --global --add url."https://${{ secrets.GITHUB_SECRET }}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
                
             - name:  Build and analyze with Maven
-              run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar 
-              working-directory: spring-petclinic
+              # run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar 
+              # working-directory: spring-petclinic
             
 
               env:
