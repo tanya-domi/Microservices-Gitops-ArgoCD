@@ -121,12 +121,11 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v4
               with:
-                file: kubernetes-manifest/
                 token: ${{ secrets._GITHUB_TOKEN }}
 
             - name: Update tags in K8s deployment manifest
               run: |
-               sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/petclinic-spring:${{github.run_id}}|" kubernetes-manifest/
+               sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/petclinic-spring:${{github.run_id}}|" deployment.yaml
                 
             - name: commit and push changes
               run: |
