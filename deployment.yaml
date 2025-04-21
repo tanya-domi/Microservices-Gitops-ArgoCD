@@ -17,11 +17,11 @@ spec:
     spec:
       initContainers:
         - name: init-db
-          image: dts81/petclinic:14577333905
+          image: dts81/petclinic:14577498459
           command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z mysql 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL DB Server has started";']      
       containers:
         - name: petclinic
-          image: dts81/petclinic:14577333905
+          image: dts81/petclinic:14577498459
           ports: 
             - containerPort: 8080        
           env:
