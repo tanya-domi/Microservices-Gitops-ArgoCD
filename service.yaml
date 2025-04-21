@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: petclinic-app-service
+  namespace: petclinic
   labels: 
     app: petclinic
 spec:
