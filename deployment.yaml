@@ -31,7 +31,7 @@ spec:
             - name: DB_NAME
               value: "petclinic"            
             - name: DB_USERNAME
-              value: "petclinic"        # RDS DB Username is dbadmin     
+              value: "petclinic"           
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
