@@ -16,11 +16,11 @@ spec:
     spec:
       initContainers:
         - name: init-db
-          image: dts81/petclinic:14520018469
+          image: busybox:1.31
           command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z mysql 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL DB Server has started";']      
       containers:
-        - name: petclinic-app
-          image: dts81/petclinic:14520018469
+        - name: petclinic
+          image: dts81/petclinic-springboot:latest
           ports: 
             - containerPort: 8080        
           env:
@@ -47,7 +47,7 @@ spec:
             periodSeconds: 10
           readinessProbe:
             httpGet:
-              path: /readyz
+              path: /actuator/health
               port: 8080
             initialDelaySeconds: 60
             periodSeconds: 10 
@@ -58,3 +58,5 @@ spec:
             limits:
               cpu: "1000m"
               memory: "500Mi"      
+
+              
