@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
     name: mysql
+    namespace: petclinic
 spec:
     type: ExternalName
     externalName: petclinic.cfysqamyo96s.eu-north-1.rds.amazonaws.com
