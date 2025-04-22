@@ -154,7 +154,9 @@ jobs:
         
         steps:
         - uses: actions/checkout@v4
-        - run: cat deployment.yaml
+        - run: |
+            cd kubernetes-manifest
+            cat deployment.yaml
          
         - uses: actions/checkout@v4
         - name: Slack Notification
