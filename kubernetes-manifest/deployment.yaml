@@ -38,20 +38,20 @@ spec:
                 secretKeyRef:
                   name: mysql-db-password
                   key: db-password           
-          livenessProbe:
-            exec:
-              command: 
-                - /bin/sh
-                - -c 
-                - nc -z localhost 8080
-            initialDelaySeconds: 60
-            periodSeconds: 10
-          readinessProbe:
-            httpGet:
-              path: /actuator/health
-              port: 8080
-            initialDelaySeconds: 60
-            periodSeconds: 10 
+          # livenessProbe:
+          #   exec:
+          #     command: 
+          #       - /bin/sh
+          #       - -c 
+          #       - nc -z localhost 8080
+          #   initialDelaySeconds: 60
+          #   periodSeconds: 10
+          # readinessProbe:
+          #   httpGet:
+          #     path: /actuator/health
+          #     port: 8080
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 10 
           resources:
             requests:
               cpu: "500m" 
