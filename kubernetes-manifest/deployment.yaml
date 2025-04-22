@@ -40,12 +40,16 @@ spec:
                   key: db-password           
           livenessProbe:
             httpGet:
-              path: /livez
+              path: /actuator/health
               port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
           readinessProbe:
             httpGet:
-              path: /readyz
+              path: /actuator/health
               port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
           resources:
             requests:
               cpu: "500m" 
