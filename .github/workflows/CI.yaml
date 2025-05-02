@@ -167,7 +167,8 @@ jobs:
            SLACK_COLOR: ${{ job.status }} # or a specific color like 'good'
            SLACK_MESSAGE: ':hammer_and_wrench: Triggered by ${{github.actor}}'
            SLACK_TITLE: GitOps-ArgoCD Deployment
-         
+
+           
         - name: Build status
           uses: act10ns/slack@v2
           with:
