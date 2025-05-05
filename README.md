@@ -38,30 +38,30 @@ Create an IAM role for the AWS Load Balancer Controller and attach the role to t
 7. Create RDS Mysql Database: 
 Create security group to allow access for RDS Database on port 3306 and create DB Subnet Group in RDS.
 
-6. Dockerhub Repositories: 
+8. Dockerhub Repositories: 
 Automatically create repository for Docker images on Dockerhub.
 
-7. ArgoCD Installation: 
+9. ArgoCD Installation: 
 Install and set up ArgoCD for continuous delivery and following GitOps approach.
 
-8. Sonarqube Integration: 
+10. Sonarqube Integration: 
 Integrate Sonarqube for code quality analysis in the CI pipeline.
 
-9 .Trivy Integration: 
+11 .Trivy Integration: 
 Trivy for container image and filesystem vulnerability scanning in the CI pipeline.
 
-10. Set up SSL: Create  SSL certificate in Certificate Manager
+12. Set up SSL: Create  SSL certificate in Certificate Manager
 
-11. Monitoring Setup: 
+13. Monitoring Setup: 
 Implement monitoring for the EKS cluster using Helm, Prometheus,  Grafana and  ELK.
 
-12. ArgoCD Application Deployment: 
+14. ArgoCD Application Deployment: 
 Leverage ArgoCD to implement a GitOps workflow, ensuring that application and infrastructure deployments are automated, auditable, and version-controlled.
 
 13. DNS Configuration: 
 Configure DNS settings to make the application accessible via custom subdomains.
 
-14. Data Persistence: 
+15. Data Persistence: 
 Test the application's ability to maintain data persistence to ensure that application state and user data are reliably stored and retained across deployments and pod restarts.
 
 Conclusion and Monitoring: 
