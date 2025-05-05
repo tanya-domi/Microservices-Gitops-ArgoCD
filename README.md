@@ -58,10 +58,10 @@ Implement monitoring for the EKS cluster using Helm, Prometheus,  Grafana and  E
 14. ArgoCD Application Deployment: 
 Leverage ArgoCD to implement a GitOps workflow, ensuring that application and infrastructure deployments are automated, auditable, and version-controlled.
 
-13. DNS Configuration: 
+15. DNS Configuration: 
 Configure DNS settings to make the application accessible via custom subdomains.
 
-15. Data Persistence: 
+16. Data Persistence: 
 Test the application's ability to maintain data persistence to ensure that application state and user data are reliably stored and retained across deployments and pod restarts.
 
 Conclusion and Monitoring: 
