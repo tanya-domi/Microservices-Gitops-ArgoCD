@@ -14,7 +14,8 @@ This Project may include enhancements, environment-specific configurations, or C
 # Project Introduction:
 Welcome to the End-to-End DevOps Kubernetes Project guide! This guide offers practical experience in deploying a secure, scalable microservices architecture on AWS with Kubernetes, incorporating DevOps best practices, security, and monitoring.
 
-# Project Overview:
+#Project Overview:
+
 In this project, we will cover the following key aspects:
 1. IAM User Setup: 
 Create an IAM user on AWS with the necessary permissions to facilitate deployment and management activities.
@@ -65,5 +66,3 @@ Test the application's ability to maintain data persistence to ensure that appli
 
 Conclusion and Monitoring: 
 Conclude the project by creating custom dashboards in Grafana and Kibana to visualize key application metrics, system performance, and logs for monitoring and troubleshooting and summarize key achievements.
-
-
