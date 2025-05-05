@@ -47,8 +47,8 @@ Install and set up ArgoCD for continuous delivery and following GitOps approach.
 8. Sonarqube Integration: 
 Integrate Sonarqube for code quality analysis in the CI pipeline.
 
- 9 .Trivy Integration: 
-Integrate Trivy for container image and filesystem vulnerability scanning in the CI pipeline.
+9 .Trivy Integration: 
+Trivy for container image and filesystem vulnerability scanning in the CI pipeline.
 
 10. Set up SSL: Create  SSL certificate in Certificate Manager
 
