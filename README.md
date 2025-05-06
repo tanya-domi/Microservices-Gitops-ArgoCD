@@ -182,7 +182,9 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
 ![Image](https://github.com/user-attachments/assets/1a513bca-209f-476e-9db3-7961c8915960)
 
 # Create RDS Database
+
 Pre-requisite-1: Create DB Security Group
+
 Create security group to allow access for RDS Database on port 3306
 Security group name: eks_rds_db_sg
 Description: Allow access for RDS Database on Port 3306
@@ -195,6 +197,7 @@ Source: Anywhere (0.0.0.0/0)
 Description: Allow access for RDS Database on Port 3306
 
 Pre-requisite-2: Create DB Subnet Group in RDS
+
 Go to RDS -> Subnet Groups
 Click on Create DB Subnet Group
 Name: eks-rds-db-subnetgroup
@@ -205,6 +208,7 @@ Subnets: 2 subnets in 2 AZs
 Click on Create
 
 # Create RDS Database
+
 Go to Services -> RDS
 Click on Create Database
 Choose a Database Creation Method: Standard Create
@@ -229,10 +233,14 @@ Availability Zone: No Preference
 Database Port: 3306
 Rest all leave to defaults
 Click on Create Database
+
 ![Image](https://github.com/user-attachments/assets/0cc69d65-3a6c-482f-a9a0-70f85361c502)
 
 # Create mysql externalName Service
-- use Mysql connection Endpoint for externalname service.
+- Accessing RDS via ExternalName Service:
+- To enable your Kubernetes workloads to connect to an Amazon RDS MySQL database, you can create a Kubernetes ExternalName service.
+- This service maps a Kubernetes DNS name to the RDS MySQL connection endpoint, allowing pods to access the database using a consistent internal name without exposing credentials
+
 apiVersion: v1
 kind: Service
 metadata:
