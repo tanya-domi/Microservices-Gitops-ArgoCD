@@ -20,53 +20,72 @@ Welcome to the End-to-End DevOps Kubernetes Project guide! This guide offers pra
 In this project, we will cover the following key aspects:
 
 Step 1. IAM User Setup: 
+
 Create an IAM user on AWS with the necessary permissions to facilitate deployment and management activities.
 
 Step 2. Infrastructure as Code (IaC): 
+
 Uses GitHub Actions to automate the deployment of a Jumphost (bastion) server on AWS EC2. The CI pipeline provisions the instance using Infrastructure as Code (Terraform).
+[![terraform](https://github.com/tanya-domi/s3-action/actions/workflows/terraform.yaml/badge.svg)](https://github.com/tanya-domi/s3-action/actions/workflows/terraform.yaml)
 
 Step 3. Github Actions Configuration: 
+
 configure essential github actions workflow, including  Docker, Sonarqube, Terraform, Kubectl, and Trivy.
 
 Step 4. EKS Cluster Deployment: 
+
 Utilize eksctl commands to create a customize Amazon EKS cluster, a managed Kubernetes service on AWS.
 
 Step 5. Load Balancer Controller Configuration: 
+
 Configure AWS Application Load Balancer (ALB) for the EKS cluster.
     
 Step 6. Create Iamserviceaccount : 
+
 Create an IAM role for the AWS Load Balancer Controller and attach the role to the Kubernetes service account.
 
 Step 7. Create RDS Mysql Database: 
+
 Create security group to allow access for RDS Database on port 3306 and create DB Subnet Group in RDS.
 
 Step 8. Dockerhub Repositories: 
+
 Automatically create repository for Docker images on Dockerhub.
 
 Step 9. ArgoCD Installation: 
+
 Install and set up ArgoCD for continuous delivery and following GitOps approach.
 
 Step 10. Sonarqube Integration: 
+
 Integrate Sonarqube for code quality analysis in the CI pipeline.
 
 Step 11 .Trivy Integration: 
+
 Trivy for container image and filesystem vulnerability scanning in the CI pipeline.
 
-Step 12. Set up SSL: Create  SSL certificate in Certificate Manager
+Step 12. Set up SSL: 
+
+Create  SSL certificate in Certificate Manager
 
 Step 13. Monitoring Setup: 
+
 Implement monitoring for the EKS cluster using Helm, Prometheus,  Grafana and  ELK.
 
 Step 14. ArgoCD Application Deployment: 
+
 Leverage ArgoCD to implement a GitOps workflow, ensuring that application and infrastructure deployments are automated, auditable, and version-controlled.
 
 Step 15. DNS Configuration: 
+
 Configure DNS settings to make the application accessible via custom subdomains.Creating an A-Record in AWS Route 53 Using ALB DNS.
 
 Step 16. Data Persistence: 
+
 Test the application's ability to maintain data persistence to ensure that application state and user data are reliably stored and retained across deployments and pod restarts.
 
 Conclusion and Monitoring: 
+
 Conclude the project by creating custom dashboards in Grafana and Kibana to visualize key application metrics, system performance, and logs for monitoring and troubleshooting and summarize key achievements.
 
 
