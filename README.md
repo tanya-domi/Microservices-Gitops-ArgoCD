@@ -11,7 +11,7 @@ This Project may include enhancements, environment-specific configurations, or C
 ![Image](https://github.com/user-attachments/assets/0d58e42a-843d-4b26-9342-0b5b736a9700)
 
 
-Project Introduction:
+# Project Introduction:
 
 Welcome to the End-to-End DevOps Kubernetes Project guide! This guide offers practical experience in deploying a secure, scalable microservices architecture on AWS with Kubernetes, incorporating DevOps best practices, security, and monitoring.
 
@@ -70,7 +70,7 @@ Conclusion and Monitoring:
 Conclude the project by creating custom dashboards in Grafana and Kibana to visualize key application metrics, system performance, and logs for monitoring and troubleshooting and summarize key achievements.
 
 
-Prerequisites:
+# Prerequisites:
 - An AWS account with the necessary permissions to provision resources.
   
 - Install Terraform & AWS CLI Install & Configure Terraform and AWS CLI on your local machine.
