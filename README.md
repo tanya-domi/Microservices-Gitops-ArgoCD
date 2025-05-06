@@ -249,10 +249,12 @@ metadata:
 spec:
     type: ExternalName
     externalName: petclinic.cfysqamyo96s.eu-north-1.rds.amazonaws.com
+    
 ![Image](https://github.com/user-attachments/assets/ca84bc0d-94a4-4043-9116-a2b87af7ed9d)
 
 
 # Connect to RDS Database using kubectl and create petclinic schema/db
+
 kubectl run -it --rm --image=mysql:latest --restart=Never mysql-client -- mysql -h usermgmtdb.c7hldelt9xfp.eu-north-1.rds.amazonaws.com -u petclinic -ppetclinic
 
 ![Image](https://github.com/user-attachments/assets/8bfa82dd-6c01-4395-89f1-dc623c83cf0b)
