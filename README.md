@@ -211,27 +211,46 @@ Click on Create
 
 Go to Services -> RDS
 Click on Create Database
+
 Choose a Database Creation Method: Standard Create
+
 Engine Options: MySQL
+
 Edition: MySQL Community
+
 Version: 5.7.22 (default populated)
+
 Template Size: Free Tier
-DB instance identifier: usermgmtdb
+
+DB instance identifier: petclinic
+
 Master Username: petclinic
+
 Master Password: petclinic
+
 Confirm Password: petclinic
+
 DB Instance Size: leave to defaults
+
 Storage: leave to defaults
+
 Connectivity
 VPC: eksctl-eksdemo1-cluster/VPC
+
 Additional Connectivity Configuration
+
 Subnet Group: eks-rds-db-subnetgroup
+
 Publicyly accessible: YES (for our learning and troubleshooting - if required)
+
 VPC Security Group: Create New
+
 Name: eks-rds-db-securitygroup
+
 Availability Zone: No Preference
+
 Database Port: 3306
-Rest all leave to defaults
+
 Click on Create Database
 
 ![Image](https://github.com/user-attachments/assets/0cc69d65-3a6c-482f-a9a0-70f85361c502)
@@ -241,15 +260,8 @@ Click on Create Database
 - To enable your Kubernetes workloads to connect to an Amazon RDS MySQL database, you can create a Kubernetes ExternalName service.
 - This service maps a Kubernetes DNS name to the RDS MySQL connection endpoint, allowing pods to access the database using a consistent internal name without exposing credentials
 
-apiVersion: v1
-kind: Service
-metadata:
-    name: mysql
-    namespace: petclinic
-spec:
-    type: ExternalName
-    externalName: petclinic.cfysqamyo96s.eu-north-1.rds.amazonaws.com
-    
+![Image](https://github.com/user-attachments/assets/f11c61df-55d8-46e2-b48f-a29a1c4d749e)
+
 ![Image](https://github.com/user-attachments/assets/ca84bc0d-94a4-4043-9116-a2b87af7ed9d)
 
 
@@ -258,6 +270,8 @@ spec:
 kubectl run -it --rm --image=mysql:latest --restart=Never mysql-client -- mysql -h usermgmtdb.c7hldelt9xfp.eu-north-1.rds.amazonaws.com -u petclinic -ppetclinic
 
 ![Image](https://github.com/user-attachments/assets/8bfa82dd-6c01-4395-89f1-dc623c83cf0b)
+
+
 
 
 
