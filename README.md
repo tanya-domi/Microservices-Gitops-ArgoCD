@@ -11,7 +11,7 @@ This Project may include enhancements, environment-specific configurations, or C
 ![Image](https://github.com/user-attachments/assets/0d58e42a-843d-4b26-9342-0b5b736a9700)
 
 
-## Project Introduction:
+#Project Introduction:
 
 Welcome to the End-to-End DevOps Kubernetes Project guide! This guide offers practical experience in deploying a secure, scalable microservices architecture on AWS with Kubernetes, incorporating DevOps best practices, security, and monitoring.
 
@@ -71,11 +71,16 @@ Conclude the project by creating custom dashboards in Grafana and Kibana to visu
 
 
 #Prerequisites:
-- An AWS account with the necessary permissions to provision resources. 
-- Install Terraform & AWS CLI Install & Configure Terraform and AWS CLI on your local machine
+- An AWS account with the necessary permissions to provision resources.
+  
+- Install Terraform & AWS CLI Install & Configure Terraform and AWS CLI on your local machine.
+  
 - Familiarity with Kubernetes, Docker, CICD pipelines, Github Actions, Terraform, and DevOps principles.
+  
 - Deploy the Jumphost Server(EC2) using Terraform on Github Actions CI.
-- Verify the Jumphost configuration, we have installed some services such as Docker, Terraform, Kubectl, eksctl, AWS CLI and Trivy to validate whether all our tools are installed or not using these commands. 
+  
+- Verify the Jumphost configuration, we have installed some services such as Docker, Terraform, Kubectl, eksctl, AWS CLI and Trivy to validate whether all our tools are installed or not using these commands.
+   
 ==> docker --version 
 ==> docker ps 
 ==> terraform --version 
