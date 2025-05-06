@@ -23,7 +23,8 @@ Step 1. IAM User Setup:
 Create an IAM user on AWS with the necessary permissions to facilitate deployment and management activities.
 
 Step 2. Infrastructure as Code (IaC): 
-Use Terraform and AWS CLI to set up the Jumphost server (EC2 instance) on AWS.
+Uses GitHub Actions to automate the deployment of a Jumphost (bastion) server on AWS EC2. The CI pipeline provisions the instance using Infrastructure as Code (Terraform).
+[![terraform](https://github.com/tanya-domi/s3-action/actions/workflows/terraform.yaml/badge.svg)](https://github.com/tanya-domi/s3-action/actions/workflows/terraform.yaml)
 
 Step 3. Github Actions Configuration: 
 configure essential github actions workflow, including  Docker, Sonarqube, Terraform, Kubectl, and Trivy.
@@ -93,5 +94,91 @@ Conclude the project by creating custom dashboards in Grafana and Kibana to visu
 
 ==> trivy --version 
 
-==> eksctl version
+
+#Pre-requisite-2: Create EKS Cluster and Worker Nodes
+
+eksctl create cluster --name=petclinic-eks-cluster \
+                      --region=us-east-1 \
+                      --zones=eu-north-1a,eu-north-1b \
+                      --version="1.29" \
+                      --without-nodegroup 
+
+#Create & Associate IAM OIDC Provider for our EKS Cluster. 
+To enable and use AWS IAM roles for Kubernetes service accounts on our EKS cluster.
+eksctl utils associate-iam-oidc-provider \
+    --region eu-north-1 \
+    --cluster etclinic-eks-cluster  \
+    --approve
+
+# Create EKS NodeGroup in VPC Private Subnets 
+eksctl create nodegroup --cluster=petclinic-eks-cluster \
+                        --region=eu-north-1 \
+                        --name=eksdemo1-ng-private1 \
+                        --node-type=t3.medium \
+                        --nodes-min=2 \
+                        --nodes-max=4 \
+                        --node-volume-size=20 \
+                        --ssh-access \
+                        --ssh-public-key=norway \
+                        --managed \
+                        --asg-access \
+                        --external-dns-access \
+                        --full-ecr-access \
+                        --appmesh-access \
+                        --alb-ingress-access \
+                        --node-private-networking  
+
+# Pre-requisite-3: Verify Cluster, Node Groups and configure kubectl cli if not configured
+
+# Verfy EKS Cluster
+eksctl get cluster
+
+# Verify EKS Cluster version
+kubectl version --short
+
+# Verify EKS Node Groups
+eksctl get nodegroup --cluster=petclinic-eks-cluster
+
+# Configure kubeconfig for kubectl
+aws eks --region eu-north-1 update-kubeconfig --name petclinic-eks-cluster
+
+# Verify EKS Nodes in EKS Cluster using kubectl
+kubectl get nodes
+
+# Load Balancer Controller Configuration
+
+# Download IAM Policy
+curl -o iam_policy_latest.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/main/docs/install/iam_policy.json
+
+# Create IAM Policy using policy downloaded 
+aws iam create-policy \
+    --policy-name AWSLoadBalancerControllerIAMPolicy \
+    --policy-document file://iam_policy_latest.json
+
+Make a note of Policy ARN as we are going to use that in next step when creating IAM Role.
+
+# Replaced name, cluster and policy arn
+# Template
+eksctl create iamserviceaccount \
+  --cluster=my_cluster \
+  --namespace=kube-system \
+  --name=aws-load-balancer-controller \ #Note:  K8S Service Account Name that need to be bound to newly created IAM Role
+  --attach-policy-arn=arn:aws:iam::111122223333:policy/AWSLoadBalancerControllerIAMPolicy \
+  --override-existing-serviceaccounts \
+  --approve
+
+
+# Install the AWS Load Balancer Controller.
+# Template
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
+  -n kube-system \
+  --set clusterName=<cluster-name> \
+  --set serviceAccount.create=false \
+  --set serviceAccount.name=aws-load-balancer-controller \
+  --set region=<region-code> \
+  --set vpcId=<vpc-xxxxxxxx> \
+  --set image.repository=<account>.dkr.ecr.<region-code>.amazonaws.com/amazon/aws-load-balancer-controller
+
+
+![Image](https://github.com/user-attachments/assets/1a513bca-209f-476e-9db3-7961c8915960)
 
