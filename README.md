@@ -82,10 +82,16 @@ Prerequisites:
 - Verify the Jumphost configuration, we have installed some services such as Docker, Terraform, Kubectl, eksctl, AWS CLI and Trivy to validate whether all our tools are installed or not using these commands.
    
 ==> docker --version 
+
 ==> docker ps 
+
 ==> terraform --version 
+
 ==> kubectl version 
+
 ==> aws --version 
+
 ==> trivy --version 
+
 ==> eksctl version
 
