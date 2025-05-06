@@ -15,7 +15,7 @@ This Project may include enhancements, environment-specific configurations, or C
 
 Welcome to the End-to-End DevOps Kubernetes Project guide! This guide offers practical experience in deploying a secure, scalable microservices architecture on AWS with Kubernetes, incorporating DevOps best practices, security, and monitoring.
 
-Project Overview:
+# Project Overview:
 
 In this project, we will cover the following key aspects:
 
@@ -24,7 +24,6 @@ Create an IAM user on AWS with the necessary permissions to facilitate deploymen
 
 Step 2. Infrastructure as Code (IaC): 
 Uses GitHub Actions to automate the deployment of a Jumphost (bastion) server on AWS EC2. The CI pipeline provisions the instance using Infrastructure as Code (Terraform).
-[![terraform](https://github.com/tanya-domi/s3-action/actions/workflows/terraform.yaml/badge.svg)](https://github.com/tanya-domi/s3-action/actions/workflows/terraform.yaml)
 
 Step 3. Github Actions Configuration: 
 configure essential github actions workflow, including  Docker, Sonarqube, Terraform, Kubectl, and Trivy.
@@ -95,22 +94,21 @@ Conclude the project by creating custom dashboards in Grafana and Kibana to visu
 ==> trivy --version 
 
 
-#Pre-requisite-2: Create EKS Cluster and Worker Nodes
-
+# Pre-requisite-2: Create EKS Cluster and Worker Nodes
 eksctl create cluster --name=petclinic-eks-cluster \
                       --region=us-east-1 \
                       --zones=eu-north-1a,eu-north-1b \
                       --version="1.29" \
                       --without-nodegroup 
 
-#Create & Associate IAM OIDC Provider for our EKS Cluster. 
+# Create & Associate IAM OIDC Provider for our EKS Cluster. 
 To enable and use AWS IAM roles for Kubernetes service accounts on our EKS cluster.
 eksctl utils associate-iam-oidc-provider \
     --region eu-north-1 \
     --cluster etclinic-eks-cluster  \
     --approve
 
-# Create EKS NodeGroup in VPC Private Subnets 
+# Create EKS NodeGroup in VPC Private Subnets .
 eksctl create nodegroup --cluster=petclinic-eks-cluster \
                         --region=eu-north-1 \
                         --name=eksdemo1-ng-private1 \
@@ -128,7 +126,8 @@ eksctl create nodegroup --cluster=petclinic-eks-cluster \
                         --alb-ingress-access \
                         --node-private-networking  
 
-# Pre-requisite-3: Verify Cluster, Node Groups and configure kubectl cli if not configured
+# Pre-requisite-3: 
+Verify Cluster, Node Groups and configure kubectl cli.
 
 # Verfy EKS Cluster
 eksctl get cluster
@@ -166,7 +165,6 @@ eksctl create iamserviceaccount \
   --attach-policy-arn=arn:aws:iam::111122223333:policy/AWSLoadBalancerControllerIAMPolicy \
   --override-existing-serviceaccounts \
   --approve
-
 
 # Install the AWS Load Balancer Controller.
 helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
