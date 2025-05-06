@@ -20,72 +20,55 @@ Welcome to the End-to-End DevOps Kubernetes Project guide! This guide offers pra
 In this project, we will cover the following key aspects:
 
 Step 1. IAM User Setup: 
-
 Create an IAM user on AWS with the necessary permissions to facilitate deployment and management activities.
 
 Step 2. Infrastructure as Code (IaC): 
-
 Uses GitHub Actions to automate the deployment of a Jumphost (bastion) server on AWS EC2. The CI pipeline provisions the instance using Infrastructure as Code (Terraform).
 [![terraform](https://github.com/tanya-domi/s3-action/actions/workflows/terraform.yaml/badge.svg)](https://github.com/tanya-domi/s3-action/actions/workflows/terraform.yaml)
 
 Step 3. Github Actions Configuration: 
-
 configure essential github actions workflow, including  Docker, Sonarqube, Terraform, Kubectl, and Trivy.
 
 Step 4. EKS Cluster Deployment: 
-
 Utilize eksctl commands to create a customize Amazon EKS cluster, a managed Kubernetes service on AWS.
 
 Step 5. Load Balancer Controller Configuration: 
-
 Configure AWS Application Load Balancer (ALB) for the EKS cluster.
     
 Step 6. Create Iamserviceaccount : 
-
 Create an IAM role for the AWS Load Balancer Controller and attach the role to the Kubernetes service account.
 
 Step 7. Create RDS Mysql Database: 
-
 Create security group to allow access for RDS Database on port 3306 and create DB Subnet Group in RDS.
 
 Step 8. Dockerhub Repositories: 
-
 Automatically create repository for Docker images on Dockerhub.
 
 Step 9. ArgoCD Installation: 
-
 Install and set up ArgoCD for continuous delivery and following GitOps approach.
 
 Step 10. Sonarqube Integration: 
-
 Integrate Sonarqube for code quality analysis in the CI pipeline.
 
 Step 11 .Trivy Integration: 
-
 Trivy for container image and filesystem vulnerability scanning in the CI pipeline.
 
 Step 12. Set up SSL: 
-
 Create  SSL certificate in Certificate Manager
 
 Step 13. Monitoring Setup: 
-
 Implement monitoring for the EKS cluster using Helm, Prometheus,  Grafana and  ELK.
 
 Step 14. ArgoCD Application Deployment: 
-
 Leverage ArgoCD to implement a GitOps workflow, ensuring that application and infrastructure deployments are automated, auditable, and version-controlled.
 
 Step 15. DNS Configuration: 
-
 Configure DNS settings to make the application accessible via custom subdomains.Creating an A-Record in AWS Route 53 Using ALB DNS.
 
 Step 16. Data Persistence: 
-
 Test the application's ability to maintain data persistence to ensure that application state and user data are reliably stored and retained across deployments and pod restarts.
 
 Conclusion and Monitoring: 
-
 Conclude the project by creating custom dashboards in Grafana and Kibana to visualize key application metrics, system performance, and logs for monitoring and troubleshooting and summarize key achievements.
 
 
@@ -198,6 +181,73 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
 
 ![Image](https://github.com/user-attachments/assets/1a513bca-209f-476e-9db3-7961c8915960)
 
+# Create RDS Database
+Pre-requisite-1: Create DB Security Group
+Create security group to allow access for RDS Database on port 3306
+Security group name: eks_rds_db_sg
+Description: Allow access for RDS Database on Port 3306
+VPC: eksctl-eksdemo1-cluster/VPC
+Inbound Rules
+Type: MySQL/Aurora
+Protocol: TPC
+Port: 3306
+Source: Anywhere (0.0.0.0/0)
+Description: Allow access for RDS Database on Port 3306
+
+Pre-requisite-2: Create DB Subnet Group in RDS
+Go to RDS -> Subnet Groups
+Click on Create DB Subnet Group
+Name: eks-rds-db-subnetgroup
+Description: EKS RDS DB Subnet Group
+VPC: eksctl-eksdemo1-cluster/VPC
+Availability Zones: eu-north-1a, eu-north-1b
+Subnets: 2 subnets in 2 AZs
+Click on Create
+
+# Create RDS Database
+Go to Services -> RDS
+Click on Create Database
+Choose a Database Creation Method: Standard Create
+Engine Options: MySQL
+Edition: MySQL Community
+Version: 5.7.22 (default populated)
+Template Size: Free Tier
+DB instance identifier: usermgmtdb
+Master Username: petclinic
+Master Password: petclinic
+Confirm Password: petclinic
+DB Instance Size: leave to defaults
+Storage: leave to defaults
+Connectivity
+VPC: eksctl-eksdemo1-cluster/VPC
+Additional Connectivity Configuration
+Subnet Group: eks-rds-db-subnetgroup
+Publicyly accessible: YES (for our learning and troubleshooting - if required)
+VPC Security Group: Create New
+Name: eks-rds-db-securitygroup
+Availability Zone: No Preference
+Database Port: 3306
+Rest all leave to defaults
+Click on Create Database
+![Image](https://github.com/user-attachments/assets/0cc69d65-3a6c-482f-a9a0-70f85361c502)
+
+# Create mysql externalName Service
+- use Mysql connection Endpoint for externalname service.
+apiVersion: v1
+kind: Service
+metadata:
+    name: mysql
+    namespace: petclinic
+spec:
+    type: ExternalName
+    externalName: petclinic.cfysqamyo96s.eu-north-1.rds.amazonaws.com
+![Image](https://github.com/user-attachments/assets/ca84bc0d-94a4-4043-9116-a2b87af7ed9d)
+
+
+# Connect to RDS Database using kubectl and create petclinic schema/db
+kubectl run -it --rm --image=mysql:latest --restart=Never mysql-client -- mysql -h usermgmtdb.c7hldelt9xfp.eu-north-1.rds.amazonaws.com -u petclinic -ppetclinic
+
+![Image](https://github.com/user-attachments/assets/8bfa82dd-6c01-4395-89f1-dc623c83cf0b)
 
 
 
