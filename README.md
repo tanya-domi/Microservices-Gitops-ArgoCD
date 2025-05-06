@@ -156,8 +156,8 @@ aws iam create-policy \
     --policy-document file://iam_policy_latest.json
 
 Make a note of Policy ARN as we are going to use that in next step when creating IAM Role.
+Replaced name, cluster and policy arn.
 
-# Replaced name, cluster and policy arn
 # Template
 eksctl create iamserviceaccount \
   --cluster=my_cluster \
@@ -169,7 +169,6 @@ eksctl create iamserviceaccount \
 
 
 # Install the AWS Load Balancer Controller.
-# Template
 helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   -n kube-system \
   --set clusterName=<cluster-name> \
@@ -181,4 +180,7 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
 
 
 ![Image](https://github.com/user-attachments/assets/1a513bca-209f-476e-9db3-7961c8915960)
+
+
+
 
