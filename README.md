@@ -339,7 +339,8 @@ Route 53 is used to manage DNS records that point to services (Application Load 
 # Build Custom Grafana Dashboards:
 Here are tailored Grafana dashboards to visualize key application and infrastructure metrics by selecting relevant data sources (Prometheus) and designing panels that display time-series data, logs, or alerts.
 
-![Image](https://github.com/user-attachments/assets/b3210975-6151-4c19-b548-4849744c0413)
+![Image](https://github.com/user-attachments/assets/4a265fdb-4e28-4491-95e3-136aab4ba7f8)
+
 
 ![Image](https://github.com/user-attachments/assets/536046da-39a8-44f0-b1fa-53f89117d973)
 
