@@ -324,7 +324,7 @@ The domain’s DNS is configured by creating A Record in Route 53, which maps th
 ![Image](https://github.com/user-attachments/assets/431fea5d-92dc-4a8d-bb25-c699b3b91891)
 
 # You validate  the Load Balancer  created 
-![Image](https://github.com/user-attachments/assets/6e16c50a-fda4-4337-9bf2-13645da35ad8)
+![Image](https://github.com/user-attachments/assets/73d9863c-161a-4bec-96e0-78ddc5c7430a)
 
 # Deployment is synced and healthy
 ![Image](https://github.com/user-attachments/assets/d856a4d8-5bdd-49d5-9880-f193b5c130dc)
