@@ -275,7 +275,7 @@ Click on Create Database
 ![Image](https://github.com/user-attachments/assets/3669a608-c3d1-4d58-be27-0fdcd33d480c)
 
 
-![Image](https://github.com/user-attachments/assets/ca84bc0d-94a4-4043-9116-a2b87af7ed9d)
+![Image](https://github.com/user-attachments/assets/9bdde09d-37be-4579-aeea-331f96c108f6)
 
 
 # Connect to RDS Database using kubectl and create petclinic schema/db
