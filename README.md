@@ -307,6 +307,11 @@ ArgoCD, configured to watch the Git repository, automatically detects changes to
 
 ![Image](https://github.com/user-attachments/assets/8343aad1-dbeb-4a3e-a499-87cab5e5e9c0)
 
+# Verify and test Domain name using nslookup
+Use nslookup to test DNS resolution for the domain name and your AWS Application Load Balancer (ALB) endpoint.
+
+![Image](https://github.com/user-attachments/assets/fa777828-751b-4884-8650-e178bfd515d7)
+
 
 # Installation of ELK
 # Deploy Amazon EBS CSI Driver for Kibana on EKS:
