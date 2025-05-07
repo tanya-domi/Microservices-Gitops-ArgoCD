@@ -348,6 +348,15 @@ Route 53 is used to manage DNS records that point to services (Application Load 
 
 ![Image Alt](https://github.com/tanya-domi/k8s-microservices-Gitops-ArgoCD/blob/bcad0ad1b500759f0e3352fd02737a01849a69fe/4.jpg)
 
+To verify the RDS database functionality, fill out the Owner form in the Petclinic application. This action triggers a database insert operation, allowing you to confirm connectivity and write access to the RDS instance.
+
+# Expected Result:
+After submitting the form, the new Owner should appear in the Owner list. This confirms that the application can successfully write to the RDS database.
+
+[![Watch the video](https://img.youtube.com/vi/KrCRFf5KgwU/maxresdefault.jpg)](https://youtu.be/KrCRFf5KgwU)
+
+### [Watch this video on YouTube](https://youtu.be/KrCRFf5KgwU)
+
 # Build Custom Grafana Dashboards:
 Here are tailored Grafana dashboards to visualize key application and infrastructure metrics by selecting relevant data sources (Prometheus) and designing panels that display time-series data, logs, or alerts.
 
