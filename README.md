@@ -1,4 +1,5 @@
 
+
 [![Petclinic-Ci](https://github.com/tanya-domi/k8s-microservices-Gitops-ArgoCD/actions/workflows/CI.yaml/badge.svg)](https://github.com/tanya-domi/k8s-microservices-Gitops-ArgoCD/actions/workflows/CI.yaml)
 
 Note, This Project is a fork of the Spring Boot PetClinic, a widely recognized reference application designed to demonstrate the architecture and best practices of Spring Boot.
@@ -351,7 +352,8 @@ Here are tailored Grafana dashboards to visualize key application and infrastruc
 # Slack Notification Channnel
 ![Image](https://github.com/user-attachments/assets/a0de18ee-fcc7-4aa4-9d0c-24e3f60cc21b)
 
-Conclusion:
+# Conclusion:
+
 In this comprehensive DevOps Kubernetes project, we successfully:
 
 - Established IAM user and Terraform for AWS setup.
@@ -363,3 +365,5 @@ In this comprehensive DevOps Kubernetes project, we successfully:
 - Implemented Monitoring and Logging Stack with Helm:
 Deployed a full observability stack using Helm charts to simplify installation and configuration. Monitoring was set up using Prometheus for metrics collection and Grafana for visualizations through custom dashboards.
 - Logs from Kubernetes workloads were aggregated and analyzed using Kibana, providing powerful search and filtering capabilities. This setup enables real-time monitoring, alerting, and log analysis, ensuring better visibility into application and infrastructure performance.
+
+
