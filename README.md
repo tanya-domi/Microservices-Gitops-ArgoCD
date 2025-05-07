@@ -319,8 +319,9 @@ To enable persistent storage for Kibana in Amazon EKS, deploy the Amazon EBS CSI
 ![Image](https://github.com/user-attachments/assets/d3c8ae38-7bf7-43f2-b153-13c2ea9acff2)
 
 # DNS Configuration: 
-The domain’s DNS is configured by creating A Record in Route 53, which maps the domain name to the load balancer's DNS
-![Image](https://github.com/user-attachments/assets/7af78ba9-ff10-46f4-8e95-3170cf943426)
+The domain’s DNS is configured by creating A Record in Route 53, which maps the domain name to the load balancer's DNS.
+
+![Image](https://github.com/user-attachments/assets/431fea5d-92dc-4a8d-bb25-c699b3b91891)
 
 # You validate  the Load Balancer  created 
 ![Image](https://github.com/user-attachments/assets/6e16c50a-fda4-4337-9bf2-13645da35ad8)
