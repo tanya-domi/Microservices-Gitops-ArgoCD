@@ -293,11 +293,13 @@ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}
 
 # Set up the Monitoring for our EKS Cluster using Prometheus and Grafana
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm repo add grafana https://grafana.github.io/helm-charts
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-helm repo update
 
-![Image](https://github.com/user-attachments/assets/b120c5ae-f692-402a-9f75-f64c8be47ff6)
+helm repo add grafana https://grafana.github.io/helm-charts
+
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+
+helm repo update
+![Image](https://github.com/user-attachments/assets/48cf5f98-eb08-447e-83d0-395ef71ef2c1)
 
 # Review and Deploy Application 
 CI/CD Automation with GitHub Actions and ArgoCD on AWS EKS:
@@ -363,10 +365,10 @@ In this comprehensive DevOps Kubernetes project, we successfully:
 
 - Established IAM user and Terraform for AWS setup.
 - Deployed Infrastructure on AWS using Github Actions and Terraform and, configured tools.
-- Set up an EKS cluster, and configured a Load Balancer.
+- Set up an EKS cluster, and configured a Load Balancer ingress controller.
 - Installed and configured ArgoCD for GitOps practices.
 - Created Github Action pipelines for CI/CD, deploying microservice architecture application.
-- Ensured Data Persistence Using RDS MySQL with Persistent Volume Claims:Integrated Amazon RDS MySQL with Kubernetes applications to ensure reliable, managed data persistence.
+- Ensured Data Persistence Using RDS MySQL with Persistent Volume Claims:Integrated Amazon RDS MySQL with Kubernetes applications to ensure reliable and managed data persistence.
 - Implemented Monitoring and Logging Stack with Helm:
 Deployed a full observability stack using Helm charts to simplify installation and configuration. Monitoring was set up using Prometheus for metrics collection and Grafana for visualizations through custom dashboards.
 - Logs from Kubernetes workloads were aggregated and analyzed using Kibana, providing powerful search and filtering capabilities. This setup enables real-time monitoring, alerting, and log analysis, ensuring better visibility into application and infrastructure performance.
