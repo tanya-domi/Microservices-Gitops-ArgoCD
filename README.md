@@ -282,13 +282,15 @@ Click on Create Database
 
 kubectl run -it --rm --image=mysql:latest --restart=Never mysql-client -- mysql -h usermgmtdb.c7hldelt9xfp.eu-north-1.rds.amazonaws.com -u petclinic -ppetclinic
 
-![Image](https://github.com/user-attachments/assets/8bfa82dd-6c01-4395-89f1-dc623c83cf0b)
+![Image](https://github.com/user-attachments/assets/d77c57d8-fcf9-4b99-9fdd-3269ef4cd2c7)
 
 # ArgoCD Installation:
 kubectl create namespace argocd
+
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.7/manifests/install.yaml
 
 - Now, expose the argoCD server as LoadBalancer using the below command
+  
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 
 # Set up the Monitoring for our EKS Cluster using Prometheus and Grafana
