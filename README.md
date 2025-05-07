@@ -342,7 +342,7 @@ Here are tailored Grafana dashboards to visualize key application and infrastruc
 ![Image](https://github.com/user-attachments/assets/4a265fdb-4e28-4491-95e3-136aab4ba7f8)
 
 
-![Image](https://github.com/user-attachments/assets/536046da-39a8-44f0-b1fa-53f89117d973)
+![Image](https://github.com/user-attachments/assets/44653de7-ca58-45c0-a99b-8aeb13b458df)
 
 # kibana
 ![Image](https://github.com/user-attachments/assets/e450a4f6-4701-4d08-8b70-249792a79cb6)
