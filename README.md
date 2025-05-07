@@ -175,8 +175,7 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   --set region=<region-code> \
   --set vpcId=<vpc-xxxxxxxx> \
   --set image.repository=<account>.dkr.ecr.<region-code>.amazonaws.com/amazon/aws-load-balancer-controller
-
-![Image](https://github.com/user-attachments/assets/65843a2c-6b93-4777-8dac-c470ffe4d3a0)
+![Image](https://github.com/user-attachments/assets/1e1916a6-b345-4e27-bb42-3a1d7c91c67a)
 
 
 # Create RDS Database
