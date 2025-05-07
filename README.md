@@ -316,7 +316,7 @@ To enable persistent storage for Kibana in Amazon EKS, deploy the Amazon EBS CSI
 
 Kibana is exposed through an Ingress using an Application Load Balancer, allowing access via a web UI.
 
-![Image](https://github.com/user-attachments/assets/1a2e56be-00a3-4fd0-97d8-9c3e600f0c9b)
+![Image Alt](https://github.com/user-attachments/assets/1a2e56be-00a3-4fd0-97d8-9c3e600f0c9b)
 
 # DNS Configuration: 
 The domain’s DNS is configured by creating A Record in Route 53, which maps the domain name to the load balancer's DNS
