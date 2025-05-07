@@ -272,7 +272,7 @@ Click on Create Database
 - To enable your Kubernetes workloads to connect to an Amazon RDS MySQL database, you can create a Kubernetes ExternalName service.
 - This service maps a Kubernetes DNS name to the RDS MySQL connection endpoint, allowing pods to access the database using a consistent internal name without exposing credentials
 
-![Image](https://github.com/user-attachments/assets/6e9e2bd0-508d-4e36-9c88-bb00ac3ea1b9)
+![Image](https://github.com/user-attachments/assets/3669a608-c3d1-4d58-be27-0fdcd33d480c)
 
 
 ![Image](https://github.com/user-attachments/assets/ca84bc0d-94a4-4043-9116-a2b87af7ed9d)
