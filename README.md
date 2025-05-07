@@ -350,7 +350,7 @@ Here are tailored Grafana dashboards to visualize key application and infrastruc
 ![Image](https://github.com/user-attachments/assets/1cef6593-18be-4e22-a947-c2e6f6d40bde)
 
 # Slack Notification Channnel
-![Image](https://github.com/user-attachments/assets/a0de18ee-fcc7-4aa4-9d0c-24e3f60cc21b)
+![Image](https://github.com/user-attachments/assets/b9427fb2-d971-416a-a9d7-88202f921cdf)
 
 # Conclusion:
 
