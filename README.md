@@ -286,7 +286,80 @@ kubectl run -it --rm --image=mysql:latest --restart=Never mysql-client -- mysql 
 
 ![Image](https://github.com/user-attachments/assets/8bfa82dd-6c01-4395-89f1-dc623c83cf0b)
 
+# ArgoCD Installation:
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.7/manifests/install.yaml
+
+- Now, expose the argoCD server as LoadBalancer using the below command
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+
+# Set up the Monitoring for our EKS Cluster using Prometheus and Grafana
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+
+![Image](https://github.com/user-attachments/assets/b120c5ae-f692-402a-9f75-f64c8be47ff6)
+
+# Review and Deploy Application 
+CI/CD Automation with GitHub Actions and ArgoCD on AWS EKS:
+GitHub Actions is used to automate the continuous integration (CI) process by building the application, creating a Docker image, and pushing it to a container registry (e.g., Amazon ECR). As part of the pipeline, the Kubernetes manifest files (e.g., Deployment, Service) are updated with the new image tag.
+
+ArgoCD, configured to watch the Git repository, automatically detects changes to the manifests and synchronizes them to the Amazon EKS cluster. This enables a fully automated GitOps workflow, ensuring consistent, version-controlled, and auditable deployments to Kubernetes.
+
+![Image](https://github.com/user-attachments/assets/8343aad1-dbeb-4a3e-a499-87cab5e5e9c0)
 
 
+# Installation of ELK
+# Deploy Amazon EBS CSI Driver for Kibana on EKS:
+To enable persistent storage for Kibana in Amazon EKS, deploy the Amazon EBS CSI (Container Storage Interface) driver. This driver allows Kubernetes to dynamically provision and manage Amazon EBS volumes for stateful workloads like Kibana, ensuring log data and dashboard configurations persist across pod restarts or rescheduling.
 
+![Image](https://github.com/user-attachments/assets/3c44f11f-a2e5-42d8-bd53-de2b1e0dda5e)
 
+Kibana is exposed through an Ingress using an Application Load Balancer, allowing access via a web UI.
+
+![Image](https://github.com/user-attachments/assets/1a2e56be-00a3-4fd0-97d8-9c3e600f0c9b)
+
+# DNS Configuration: 
+The domain’s DNS is configured by creating A Record in Route 53, which maps the domain name to the load balancer's DNS
+![Image](https://github.com/user-attachments/assets/7af78ba9-ff10-46f4-8e95-3170cf943426)
+
+# You validate  the Load Balancer  created 
+![Image](https://github.com/user-attachments/assets/6e16c50a-fda4-4337-9bf2-13645da35ad8)
+
+# Deployment is synced and healthy
+![Image](https://github.com/user-attachments/assets/d856a4d8-5bdd-49d5-9880-f193b5c130dc)
+
+Route 53 is used to manage DNS records that point to services (Application Load Balancer). An SSL certificate, typically issued through AWS Certificate Manager (ACM), is attached to the load balancer to enable HTTPS traffic.
+
+![Image](https://github.com/user-attachments/assets/419b1deb-ca85-46f2-9b52-a45f64cd5409)
+
+![Image](https://github.com/user-attachments/assets/9c750bcd-d695-499b-ade2-c670d15601f5)
+
+# Build Custom Grafana Dashboards:
+Here are tailored Grafana dashboards to visualize key application and infrastructure metrics by selecting relevant data sources (Prometheus) and designing panels that display time-series data, logs, or alerts.
+
+![Image](https://github.com/user-attachments/assets/b3210975-6151-4c19-b548-4849744c0413)
+
+![Image](https://github.com/user-attachments/assets/536046da-39a8-44f0-b1fa-53f89117d973)
+
+# kibana
+![Image](https://github.com/user-attachments/assets/e450a4f6-4701-4d08-8b70-249792a79cb6)
+
+![Image](https://github.com/user-attachments/assets/a277a653-69be-4849-a9c3-03e0a496dc27)
+
+# Slack Notification Channnel
+![Image](https://github.com/user-attachments/assets/a0de18ee-fcc7-4aa4-9d0c-24e3f60cc21b)
+
+Conclusion:
+In this comprehensive DevOps Kubernetes project, we successfully:
+
+- Established IAM user and Terraform for AWS setup.
+- Deployed Infrastructure on AWS using Github Actions and Terraform and, configured tools.
+- Set up an EKS cluster, and configured a Load Balancer.
+- Installed and configured ArgoCD for GitOps practices.
+- Created Github Action pipelines for CI/CD, deploying microservice architecture application.
+- Ensured Data Persistence Using RDS MySQL with Persistent Volume Claims:Integrated Amazon RDS MySQL with Kubernetes applications to ensure reliable, managed data persistence.
+- Implemented Monitoring and Logging Stack with Helm:
+Deployed a full observability stack using Helm charts to simplify installation and configuration. Monitoring was set up using Prometheus for metrics collection and Grafana for visualizations through custom dashboards.
+- Logs from Kubernetes workloads were aggregated and analyzed using Kibana, providing powerful search and filtering capabilities. This setup enables real-time monitoring, alerting, and log analysis, ensuring better visibility into application and infrastructure performance.
