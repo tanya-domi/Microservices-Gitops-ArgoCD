@@ -364,4 +364,4 @@ In this comprehensive DevOps Kubernetes project, we successfully:
 Deployed a full observability stack using Helm charts to simplify installation and configuration. Monitoring was set up using Prometheus for metrics collection and Grafana for visualizations through custom dashboards.
 - Logs from Kubernetes workloads were aggregated and analyzed using Kibana, providing powerful search and filtering capabilities. This setup enables real-time monitoring, alerting, and log analysis, ensuring better visibility into application and infrastructure performance.
 
-
+![Image](https://github.com/user-attachments/assets/74c225d6-bee3-44da-ac04-d1f050e8ffda)
