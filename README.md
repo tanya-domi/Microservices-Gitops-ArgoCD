@@ -327,7 +327,7 @@ The domain’s DNS is configured by creating A Record in Route 53, which maps th
 ![Image](https://github.com/user-attachments/assets/73d9863c-161a-4bec-96e0-78ddc5c7430a)
 
 # Deployment is synced and healthy
-![Image](https://github.com/user-attachments/assets/d856a4d8-5bdd-49d5-9880-f193b5c130dc)
+![Image](https://github.com/user-attachments/assets/fa69ced2-13f8-41e4-9bf1-d18f92ba94b4)
 
 Route 53 is used to manage DNS records that point to services (Application Load Balancer). An SSL certificate, typically issued through AWS Certificate Manager (ACM), is attached to the load balancer to enable HTTPS traffic.
 
