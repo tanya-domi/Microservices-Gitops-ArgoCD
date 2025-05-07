@@ -265,6 +265,7 @@ Availability Zone: No Preference
 Database Port: 3306
 
 Click on Create Database
+
 ![Image](https://github.com/user-attachments/assets/6d134a23-ee9a-46df-af62-87619e43f25e)
 
 # Create mysql externalName Service
