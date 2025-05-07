@@ -346,8 +346,6 @@ Route 53 is used to manage DNS records that point to services (Application Load 
 ![Image Alt](https://github.com/tanya-domi/k8s-microservices-Gitops-ArgoCD/blob/df98891c5d6e112b94fdbc5625e145da8d028f45/2.jpg)
 
 
-![Image Alt](https://github.com/tanya-domi/k8s-microservices-Gitops-ArgoCD/blob/bcad0ad1b500759f0e3352fd02737a01849a69fe/4.jpg)
-
 To verify the RDS database functionality, fill out the Owner form in the Petclinic application. This action triggers a database insert operation, allowing you to confirm connectivity and write access to the RDS instance.
 
 # Expected Result:
