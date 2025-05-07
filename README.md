@@ -311,7 +311,7 @@ ArgoCD, configured to watch the Git repository, automatically detects changes to
 ![Image](https://github.com/user-attachments/assets/877cc0e5-6a5c-443e-a77c-e2fe51b069fd)
 
 # Verify and test Domain name using nslookup
-Use nslookup to test DNS resolution for the domain name and your AWS Application Load Balancer (ALB) endpoint.
+Use nslookup to test DNS resolution for the domain name and AWS Application Load Balancer (ALB) endpoint.
 
 ![Image](https://github.com/user-attachments/assets/fa777828-751b-4884-8650-e178bfd515d7)
 
@@ -325,6 +325,9 @@ To enable persistent storage for Kibana in Amazon EKS, deploy the Amazon EBS CSI
 # Kibana is exposed through an Ingress using an Application Load Balancer, allowing access via a web UI.
 
 ![Image](https://github.com/user-attachments/assets/d3c8ae38-7bf7-43f2-b153-13c2ea9acff2)
+
+# Use nslookup to test DNS resolution for kibana domain name and AWS Application Load Balancer (ALB) endpoint.
+![Image](https://github.com/user-attachments/assets/c0103355-a924-4955-ac5f-8dab4b97939a)
 
 # DNS Configuration: 
 The domain’s DNS is configured by creating A Record in Route 53, which maps the domain name to the load balancer's DNS.
