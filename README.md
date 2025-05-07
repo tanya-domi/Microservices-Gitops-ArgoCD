@@ -333,7 +333,7 @@ Route 53 is used to manage DNS records that point to services (Application Load 
 ![Image Alt](https://github.com/tanya-domi/k8s-microservices-Gitops-ArgoCD/blob/df98891c5d6e112b94fdbc5625e145da8d028f45/2.jpg)
 
 
-![Image Alt](https://github.com/user-attachments/assets/9c750bcd-d695-499b-ade2-c670d15601f5)
+![Image Alt](https://github.com/tanya-domi/k8s-microservices-Gitops-ArgoCD/blob/bcad0ad1b500759f0e3352fd02737a01849a69fe/4.jpg)
 
 # Build Custom Grafana Dashboards:
 Here are tailored Grafana dashboards to visualize key application and infrastructure metrics by selecting relevant data sources (Prometheus) and designing panels that display time-series data, logs, or alerts.
