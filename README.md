@@ -23,6 +23,7 @@ Create an IAM user on AWS with the necessary permissions to facilitate deploymen
 
 Step 2. Infrastructure as Code (IaC): 
 Uses GitHub Actions to automate the deployment of a Jumphost (bastion) server on AWS EC2. The CI pipeline provisions the instance using Infrastructure as Code (Terraform).
+[![IAC CI](https://github.com/tanya-domi/aic/actions/workflows/terraform.yml/badge.svg)](https://github.com/tanya-domi/aic/actions/workflows/terraform.yml)
 
 Step 3. Github Actions Configuration: 
 configure essential github actions workflow, including  Docker, Sonarqube, Terraform, Kubectl, and Trivy.
