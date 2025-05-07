@@ -305,7 +305,7 @@ GitHub Actions is used to automate the continuous integration (CI) process by bu
 
 ArgoCD, configured to watch the Git repository, automatically detects changes to the manifests and synchronizes them to the Amazon EKS cluster. This enables a fully automated GitOps workflow, ensuring consistent, version-controlled, and auditable deployments to Kubernetes.
 
-![Image](https://github.com/user-attachments/assets/8343aad1-dbeb-4a3e-a499-87cab5e5e9c0)
+![Image](https://github.com/user-attachments/assets/877cc0e5-6a5c-443e-a77c-e2fe51b069fd)
 
 # Verify and test Domain name using nslookup
 Use nslookup to test DNS resolution for the domain name and your AWS Application Load Balancer (ALB) endpoint.
