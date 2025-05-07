@@ -312,7 +312,7 @@ ArgoCD, configured to watch the Git repository, automatically detects changes to
 # Deploy Amazon EBS CSI Driver for Kibana on EKS:
 To enable persistent storage for Kibana in Amazon EKS, deploy the Amazon EBS CSI (Container Storage Interface) driver. This driver allows Kubernetes to dynamically provision and manage Amazon EBS volumes for stateful workloads like Kibana, ensuring log data and dashboard configurations persist across pod restarts or rescheduling.
 
-![Image](https://github.com/user-attachments/assets/3c44f11f-a2e5-42d8-bd53-de2b1e0dda5e)
+![Image](https://github.com/user-attachments/assets/60fa6b7e-d58f-4a44-b027-87f0c10dcf72)
 
 # Kibana is exposed through an Ingress using an Application Load Balancer, allowing access via a web UI.
 
