@@ -81,26 +81,33 @@ Conclude the project by creating custom dashboards in Grafana and Kibana to visu
 - Deploy the Jumphost Server(EC2) using Terraform on Github Actions CI.
   
 - Verify the Jumphost configuration, we have installed some services such as Docker, Terraform, Kubectl, eksctl, AWS CLI and Trivy to validate whether all our tools are installed or not using these commands.
-   
+-------   
 ==> docker --version 
-
+-------
+-------
 ==> docker ps 
-
+-------
+---------
 ==> terraform --version 
-
+---------
+--------
 ==> kubectl version 
-
+--------
+--------
 ==> aws --version 
-
+--------
+---------
 ==> trivy --version 
-
+-----------
 
 # Pre-requisite-2: Create EKS Cluster and Worker Nodes
+--------
 eksctl create cluster --name=petclinic-eks-cluster \
                       --region=us-east-1 \
                       --zones=eu-north-1a,eu-north-1b \
                       --version="1.29" \
                       --without-nodegroup 
+--------
 
 # Create & Associate IAM OIDC Provider for our EKS Cluster. 
 To enable and use AWS IAM roles for Kubernetes service accounts on our EKS cluster.
