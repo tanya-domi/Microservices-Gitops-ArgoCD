@@ -81,42 +81,45 @@ Conclude the project by creating custom dashboards in Grafana and Kibana to visu
 - Deploy the Jumphost Server(EC2) using Terraform on Github Actions CI.
   
 - Verify the Jumphost configuration, we have installed some services such as Docker, Terraform, Kubectl, eksctl, AWS CLI and Trivy to validate whether all our tools are installed or not using these commands.
--------   
-==> docker --version 
--------
--------
-==> docker ps 
--------
----------
-==> terraform --version 
----------
---------
-==> kubectl version 
---------
---------
-==> aws --version 
---------
----------
-==> trivy --version 
------------
+```
+docker --version 
+```
+```
+docker ps 
+```
+```
+terraform --version 
+```
+```
+kubectl version 
+```
+```
+aws --version 
+```
+```
+trivy --version 
+```
 
 # Pre-requisite-2: Create EKS Cluster and Worker Nodes
---------
+```
 eksctl create cluster --name=petclinic-eks-cluster \
                       --region=us-east-1 \
                       --zones=eu-north-1a,eu-north-1b \
                       --version="1.29" \
-                      --without-nodegroup 
---------
+                      --without-nodegroup
+```
 
 # Create & Associate IAM OIDC Provider for our EKS Cluster. 
 To enable and use AWS IAM roles for Kubernetes service accounts on our EKS cluster.
+```
 eksctl utils associate-iam-oidc-provider \
     --region eu-north-1 \
     --cluster etclinic-eks-cluster  \
     --approve
+```
 
 # Create EKS NodeGroup in VPC Private Subnets .
+```
 eksctl create nodegroup --cluster=petclinic-eks-cluster \
                         --region=eu-north-1 \
                         --name=eksdemo1-ng-private1 \
@@ -133,39 +136,46 @@ eksctl create nodegroup --cluster=petclinic-eks-cluster \
                         --appmesh-access \
                         --alb-ingress-access \
                         --node-private-networking  
-
+```
 # Pre-requisite-3: 
 Verify Cluster, Node Groups and configure kubectl cli.
 
 # Verfy EKS Cluster
+```
 eksctl get cluster
-
+```
 # Verify EKS Cluster version
+```
 kubectl version --short
-
+```
 # Verify EKS Node Groups
+```
 eksctl get nodegroup --cluster=petclinic-eks-cluster
-
+```
 # Configure kubeconfig for kubectl
+```
 aws eks --region eu-north-1 update-kubeconfig --name petclinic-eks-cluster
-
+```
 # Verify EKS Nodes in EKS Cluster using kubectl
+```
 kubectl get nodes
-
+```
 # Load Balancer Controller Configuration
-
-# Download IAM Policy
+Download IAM Policy
+```
 curl -o iam_policy_latest.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/main/docs/install/iam_policy.json
-
+```
 # Create IAM Policy using policy downloaded 
+```
 aws iam create-policy \
     --policy-name AWSLoadBalancerControllerIAMPolicy \
     --policy-document file://iam_policy_latest.json
+```
 
 Make a note of Policy ARN as we are going to use that in next step when creating IAM Role.
 Replaced name, cluster and policy arn.
-
 # Template
+```
 eksctl create iamserviceaccount \
   --cluster=my_cluster \
   --namespace=kube-system \
@@ -173,8 +183,10 @@ eksctl create iamserviceaccount \
   --attach-policy-arn=arn:aws:iam::111122223333:policy/AWSLoadBalancerControllerIAMPolicy \
   --override-existing-serviceaccounts \
   --approve
+```
 
 # Install the AWS Load Balancer Controller.
+```
 helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   -n kube-system \
   --set clusterName=<cluster-name> \
@@ -184,10 +196,10 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   --set vpcId=<vpc-xxxxxxxx> \
   --set image.repository=<account>.dkr.ecr.<region-code>.amazonaws.com/amazon/aws-load-balancer-controller
 ![Image](https://github.com/user-attachments/assets/1e1916a6-b345-4e27-bb42-3a1d7c91c67a)
-
+```
 
 # Create RDS Database
-
+```
 Pre-requisite-1: Create DB Security Group
 
 Create security group to allow access for RDS Database on port 3306
@@ -271,13 +283,16 @@ Availability Zone: No Preference
 Database Port: 3306
 
 Click on Create Database
+```
 
 ![Image](https://github.com/user-attachments/assets/69fe6a8c-455e-4ce1-8784-04f52ae3767e)
 
 # Create mysql externalName Service
+```
 - Accessing RDS via ExternalName Service:
 - To enable your Kubernetes workloads to connect to an Amazon RDS MySQL database, you can create a Kubernetes ExternalName service.
 - This service maps a Kubernetes DNS name to the RDS MySQL connection endpoint, allowing pods to access the database using a consistent internal name without exposing credentials
+```
 
 ![Image](https://github.com/user-attachments/assets/3669a608-c3d1-4d58-be27-0fdcd33d480c)
 
@@ -286,28 +301,36 @@ Click on Create Database
 
 
 # Connect to RDS Database using kubectl and create petclinic schema/db
-
+```
 kubectl run -it --rm --image=mysql:latest --restart=Never mysql-client -- mysql -h usermgmtdb.c7hldelt9xfp.eu-north-1.rds.amazonaws.com -u petclinic -ppetclinic
+```
 
 ![Image](https://github.com/user-attachments/assets/d77c57d8-fcf9-4b99-9fdd-3269ef4cd2c7)
 
 # ArgoCD Installation:
+```
 kubectl create namespace argocd
-
+```
+```
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.7/manifests/install.yaml
-
+```
 - Now, expose the argoCD server as LoadBalancer using the below command
-  
+``` 
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
-
+```
 # Set up the Monitoring for our EKS Cluster using Prometheus and Grafana
+```
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-
+```
+```
 helm repo add grafana https://grafana.github.io/helm-charts
-
+```
+```
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-
+```
+```
 helm repo update
+```
 ![Image](https://github.com/user-attachments/assets/48cf5f98-eb08-447e-83d0-395ef71ef2c1)
 
 # Review and Deploy Application 
@@ -319,13 +342,14 @@ ArgoCD, configured to watch the Git repository, automatically detects changes to
 ![Image](https://github.com/user-attachments/assets/877cc0e5-6a5c-443e-a77c-e2fe51b069fd)
 
 # Verify and test Domain name using nslookup
+```
 Use nslookup to test DNS resolution for the domain name and AWS Application Load Balancer (ALB) endpoint.
-
+```
 ![Image](https://github.com/user-attachments/assets/fa777828-751b-4884-8650-e178bfd515d7)
 
 
 # Installation of ELK
-# Deploy Amazon EBS CSI Driver for Kibana on EKS:
+Deploy Amazon EBS CSI Driver for Kibana on EKS:
 To enable persistent storage for Kibana in Amazon EKS, deploy the Amazon EBS CSI (Container Storage Interface) driver. This driver allows Kubernetes to dynamically provision and manage Amazon EBS volumes for stateful workloads like Kibana, ensuring log data and dashboard configurations persist across pod restarts or rescheduling.
 
 ![Image](https://github.com/user-attachments/assets/60fa6b7e-d58f-4a44-b027-87f0c10dcf72)
@@ -352,15 +376,15 @@ Route 53 is used to manage DNS records that point to services (Application Load 
 
 ![Image Alt](https://github.com/tanya-domi/k8s-microservices-Gitops-ArgoCD/blob/df98891c5d6e112b94fdbc5625e145da8d028f45/2.jpg)
 
-
 To verify the RDS database functionality, fill out the Owner form in the Petclinic application. This action triggers a database insert operation, allowing you to confirm connectivity and write access to the RDS instance.
 
 # Expected Result:
 After submitting the form, the new Owner should appear in the Owner list. This confirms that the application can successfully write to the RDS database.
 
 [![Watch the video](https://img.youtube.com/vi/KrCRFf5KgwU/maxresdefault.jpg)](https://youtu.be/KrCRFf5KgwU)
-
+```
 ### [Watch this video on YouTube](https://youtu.be/KrCRFf5KgwU)
+```
 
 # Build Custom Grafana Dashboards:
 Here are tailored Grafana dashboards to visualize key application and infrastructure metrics by selecting relevant data sources (Prometheus) and designing panels that display time-series data, logs, or alerts.
