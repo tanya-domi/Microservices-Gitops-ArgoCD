@@ -356,7 +356,7 @@ To enable persistent storage for Kibana in Amazon EKS, deploy the Amazon EBS CSI
 ![Image](https://github.com/user-attachments/assets/c0103355-a924-4955-ac5f-8dab4b97939a)
 
 # DNS Configuration: 
-The domain’s DNS is configured by creating A Record in Route 53, which maps the domain name to the load balancer's DNS.
+The domain’s DNS is configured by creating A Record in Route 53, which maps the domain name to the load balancer's DNS. Route 53 is used to manage DNS records that point to services (Application Load Balancer). An SSL certificate, typically issued through AWS Certificate Manager (ACM), is attached to the load balancer to enable HTTPS traffic.
 
 ![Image](https://github.com/user-attachments/assets/431fea5d-92dc-4a8d-bb25-c699b3b91891)
 
@@ -366,12 +366,11 @@ The domain’s DNS is configured by creating A Record in Route 53, which maps th
 # Deployment is synced and healthy
 ![Image](https://github.com/user-attachments/assets/fa69ced2-13f8-41e4-9bf1-d18f92ba94b4)
 
-Route 53 is used to manage DNS records that point to services (Application Load Balancer). An SSL certificate, typically issued through AWS Certificate Manager (ACM), is attached to the load balancer to enable HTTPS traffic.
-
+# Test the application database to ensure data persists correctly and information is properly populated in the RDS instance.
 ![Image Alt](https://github.com/tanya-domi/k8s-microservices-Gitops-ArgoCD/blob/df98891c5d6e112b94fdbc5625e145da8d028f45/2.jpg)
-```
+
 To verify the RDS database functionality, fill out the Owner form in the Petclinic application. This action triggers a database insert operation, allowing you to confirm connectivity and write access to the RDS instance.
-```
+
 # Expected Result:
 After submitting the form, the new Owner should appear in the Owner list. This confirms that the application can successfully write to the RDS database.
 
